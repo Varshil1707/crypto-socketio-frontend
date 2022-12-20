@@ -8,7 +8,10 @@ import socketIo from "socket.io-client";
 function App() {
   const [coins, setCoins] = useState([]);
   const [search, setSearch] = useState("");
-  const ENDPOINT = "http://localhost:4500/";
+  const ENDPOINT = "https://crypt-socketio-backend.onrender.com";
+
+
+
 
   useEffect(() => {
     const socket = socketIo(ENDPOINT, { transports: ["websocket"] });
