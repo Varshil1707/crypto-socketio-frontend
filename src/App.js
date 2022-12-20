@@ -4,21 +4,12 @@ import "./App.css";
 import Coin from "./Coin";
 import socketIo from "socket.io-client";
 
+
 function App() {
   const [coins, setCoins] = useState([]);
   const [search, setSearch] = useState("");
-  const ENDPOINT = "http://localhost:4500/";
+  const ENDPOINT = "https://crypto-socketio-frontend.onrender.com";
 
-  const getData = () => {
-    axios
-      .get(
-        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=falsey"
-      )
-      .then((res) => {
-        setCoins(res.data);
-      })
-      .catch((error) => console.log(error));
-  };
 
   // useEffect(() => {
   //   getData();
