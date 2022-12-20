@@ -8,15 +8,7 @@ import socketIo from "socket.io-client";
 function App() {
   const [coins, setCoins] = useState([]);
   const [search, setSearch] = useState("");
-  const ENDPOINT = "https://crypto-socketio-frontend.onrender.com";
-
-
-  // useEffect(() => {
-  //   getData();
-  //   socket.on("connection", ()=>{
-  //     console.log("Connection Established")
-  //   })
-  // }, []);
+  const ENDPOINT = "http://localhost:4500/";
 
   useEffect(() => {
     const socket = socketIo(ENDPOINT, { transports: ["websocket"] });
