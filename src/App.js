@@ -8,7 +8,7 @@ import socketIo from "socket.io-client";
 function App() {
   const [coins, setCoins] = useState([]);
   const [search, setSearch] = useState("");
-  // const ENDPOINT = "http://localhost:4500/";
+  // const ENDPOINT = "http://localhost:3001/";
   const ENDPOINT = "https://crypt-socketio-backend.onrender.com";
 
 
@@ -20,7 +20,7 @@ function App() {
       setCoins(data);
       console.log("first")
     });
-    socket.on("data-error", (data) => console.log(data));
+    socket.on("data-error", (data) => console.log(data.message));
   }, []);
 
   const handleChange = (e) => {
