@@ -8,19 +8,22 @@ import socketIo from "socket.io-client";
 function App() {
   const [coins, setCoins] = useState([]);
   const [search, setSearch] = useState("");
-  // const ENDPOINT = "http://localhost:3001/";
-  const ENDPOINT = "https://crypt-socketio-backend.onrender.com";
+  const ENDPOINT = "http://localhost:3001/";
+  // const ENDPOINT = "https://crypt-socketio-backend.onrender.com";
 
-
+  let socket
 
   useEffect(() => {
-    const socket = socketIo(ENDPOINT, { transports: ["websocket"] });
+     socket = socketIo(ENDPOINT, { transports: ["websocket"] });
 
     socket.on("data-emit", (data) => {
       setCoins(data);
-      console.log("first")
     });
+    
     socket.on("data-error", (data) => console.log(data.message));
+    return  () => {
+      console.log("console in cleanUp")
+    }
   }, []);
 
   const handleChange = (e) => {
@@ -30,6 +33,7 @@ function App() {
   const filteredCoins = coins.filter((coin) =>
     coin.name.toLowerCase().includes(search.toLowerCase())
   );
+
 
   return (
     <div className="coin-app">
