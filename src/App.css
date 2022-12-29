@@ -12,12 +12,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 64px;
+  margin-top: 5%;
   color: #fff;
 }
 
 .coin-search {
-  margin-bottom: 64px;
+  margin-bottom: 2%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -47,4 +47,15 @@
 
 .coin-input::placeholder {
   color: #e2e2e2;
+}
+
+.error-container {
+  display: flex;
+  
+}
+
+.error-message {
+border: 5px solid red;
+padding: 5px;
+border-radius: 5px;
 }

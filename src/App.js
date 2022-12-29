@@ -1,69 +1,18 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import "./App.css";
-import Coin from "./Coin";
-import socketIo from "socket.io-client";
+import React from 'react'
+import Mainpage from './Mainpage'
+import { Routes, Route } from "react-router-dom";
+import DescriptionPage from './DescriptionPage';
 
-
-function App() {
-  const [coins, setCoins] = useState([]);
-  const [search, setSearch] = useState("");
-  const ENDPOINT = "http://localhost:3001/";
-  // const ENDPOINT = "https://crypt-socketio-backend.onrender.com";
-
-  let socket
-
-  useEffect(() => {
-     socket = socketIo(ENDPOINT, { transports: ["websocket"] });
-
-    socket.on("data-emit", (data) => {
-      setCoins(data);
-    });
-    
-    socket.on("data-error", (data) => console.log(data.message));
-    return  () => {
-      console.log("console in cleanUp")
-    }
-  }, []);
-
-  const handleChange = (e) => {
-    setSearch(e.target.value);
-  };
-
-  const filteredCoins = coins.filter((coin) =>
-    coin.name.toLowerCase().includes(search.toLowerCase())
-  );
-
-
+const App = () => {
   return (
-    <div className="coin-app">
-      <div className="coin-search">
-        <h1 className="coin-text">Search a currency</h1>
-        <form>
-          <input
-            className="coin-input"
-            type="text"
-            onChange={handleChange}
-            placeholder="Search"
-          />
-        </form>
-      </div>
-      {filteredCoins.map((coin) => {
-        return (
-          <Coin
-            key={coin.id}
-            name={coin.name}
-            price={coin.current_price}
-            symbol={coin.symbol}
-            marketcap={coin.total_volume}
-            volume={coin.market_cap}
-            image={coin.image}
-            priceChange={coin.price_change_percentage_24h}
-          />
-        );
-      })}
+    <div>
+        <Routes>
+        <Route path='/' element={<Mainpage/>} />
+        <Route path='/:symbol' element = {<DescriptionPage/>} />
+        </Routes>
+
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

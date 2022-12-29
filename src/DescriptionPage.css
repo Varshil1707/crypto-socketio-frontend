@@ -1,0 +1,13 @@
+.descriptionPageContainer{
+    display: flex;
+    flex-direction: row;
+    padding: 5vmax;
+}
+.image { 
+    margin: 2vmax;
+}
+.description > p {
+    position: relative;
+    top: 10%;
+    margin: 20px;
+}

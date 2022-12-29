@@ -1,0 +1,18 @@
+.toaster-container {
+  margin: 5px;
+  position: fixed;
+  left: 20px;
+  top: 15px;
+  padding: 15px;
+  border-radius: 5px;
+
+}
+
+
+.toaster-text {
+    background-color: rgb(221, 59, 59);
+    font-size: medium;
+    border-radius: 5px;
+    font-weight: bolder;
+    padding: 10px;
+}
