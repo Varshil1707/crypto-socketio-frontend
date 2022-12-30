@@ -13,8 +13,8 @@ const DescriptionPage = () => {
   const id = useSelector((data) => data.description.id);
 
   let socket;
-  const ENDPOINT = "http://localhost:3001/";
-  // const ENDPOINT = "https://crypt-socketio-backend.onrender.com";
+  // const ENDPOINT = "http://localhost:3001/";
+  const ENDPOINT = "https://crypt-socketio-backend.onrender.com";
   useEffect(() => {
     socket = socketIo(ENDPOINT, { transports: ["websocket"] });
     socket.on("data-emit", (data) => {

@@ -11,8 +11,8 @@ function Mainpage() {
   const [erroroccured, setErroroccured] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [loader, setLoader] = useState(false);
-  const ENDPOINT = "http://localhost:3001/";
-  // const ENDPOINT = "https://crypt-socketio-backend.onrender.com";
+  // const ENDPOINT = "http://localhost:3001/";
+  const ENDPOINT = "https://crypt-socketio-backend.onrender.com";
   let socket;
 
   useEffect(() => {
