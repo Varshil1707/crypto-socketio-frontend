@@ -3,7 +3,7 @@ import "./App.css";
 import Coin from "./Coin";
 import socketIo from "socket.io-client";
 import Toaster from "./Toaster";
-import { CircularProgress, LinearProgress, Stack } from "@mui/material";
+import {  LinearProgress, Stack } from "@mui/material";
 
 function Mainpage() {
   const [coins, setCoins] = useState([]);
@@ -11,17 +11,19 @@ function Mainpage() {
   const [erroroccured, setErroroccured] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [loader, setLoader] = useState(false);
-  // const ENDPOINT = "http://localhost:3001/";
-  const ENDPOINT = "https://crypt-socketio-backend.onrender.com";
+  const ENDPOINT = "http://localhost:3001/";
+  // const ENDPOINT = "https://crypt-socketio-backend.onrender.com";
   let socket;
 
   useEffect(() => {
+    setLoader(true);
+    
     socket = socketIo(ENDPOINT, { transports: ["websocket"] });
-
+    
     socket.on("data-emit", (data) => {
       setLoader(true);
       setCoins(data);
-      setLoader(false);
+      setTimeout(()=>setLoader(false),500)
     });
 
     socket.on("data-error", (data) => setErrorMessage(data.message));
@@ -29,6 +31,8 @@ function Mainpage() {
       setErroroccured(errorMessage)
     );
   }, []);
+
+  console.log(loader)
 
 
   const handleChange = (e) => {
