@@ -7,7 +7,8 @@ const initialState = {
     marketcap : null,
     volume : null,
     priceChange : null,
-    image : null
+    image : null,
+    id : null
 }
 
 const descriptionSlice = createSlice({
@@ -22,6 +23,8 @@ const descriptionSlice = createSlice({
         state.volume = action.payload.volume
         state.priceChange = action.payload.priceChange
         state.image = action.payload.image
+        state.id = action.payload.id
+
     }
   }
 });

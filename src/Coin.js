@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Coin.css";
 import { useDispatch } from "react-redux";
 import { descriptionPage } from "./features/descriptionSlice";
 import { useNavigate } from "react-router-dom";
+
 const Coin = ({
   name,
+  id,
   price,
   symbol,
   marketcap,
@@ -16,11 +18,13 @@ const Coin = ({
   const navigate = useNavigate()
   return (
     <div className="coin-container">
+
       <div
         className="coin-row"
         onClick={() => {
           dispatch(
             descriptionPage({
+              id : id,
               name: name,
               price: price,
               symbol: symbol,
