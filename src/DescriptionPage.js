@@ -16,6 +16,7 @@ const DescriptionPage = () => {
   // const ENDPOINT = "http://localhost:3001/";
   const ENDPOINT = "https://crypt-socketio-backend.onrender.com";
   useEffect(() => {
+    setLoader(true)
     socket = socketIo(ENDPOINT, { transports: ["websocket"] });
     socket.on("data-emit", (data) => {
       setLoader(true);
@@ -31,7 +32,7 @@ const DescriptionPage = () => {
   return (
     <div>
       {loader && (
-        <Stack sx={{ width: "100%", color: "red", top: "10%" }} spacing={2}>
+        <Stack sx={{ width: "100%", color: "red", top: "20%", marginTop : "10px" }} spacing={2}>
           <LinearProgress  color="inherit" />
         </Stack>
       )}
